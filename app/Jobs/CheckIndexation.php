@@ -31,6 +31,8 @@ class CheckIndexation implements ShouldQueue
     {
         try{
 
+            logger()->info(config('services.spaceserp.api_key'));
+
             $http = new \GuzzleHttp\Client([
                 'verify' => false
             ]);
@@ -48,7 +50,7 @@ class CheckIndexation implements ShouldQueue
 
             logger()->info(print_r($body, true));
 
-            if($body->organic_results && count($body->organic_results) > 0){
+            if(isset($body->organic_results) && count($body->organic_results) > 0){
                 $this->url->status = 'success';
             }else{
                 $this->url->status = 'failed';

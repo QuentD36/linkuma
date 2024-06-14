@@ -15,7 +15,7 @@ class UpdateUrl implements ShouldBroadcast
 
     public $search;
 
-    public $broadcastQueue = 'updateUrlQueue';
+    public $broadcastQueue = 'notification';
 
     /**
      * Create a new event instance.

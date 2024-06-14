@@ -38,7 +38,7 @@ class UrlController extends Controller
             $new_url->search()->associate($search);
             $new_url->save();
 
-            CheckIndexation::dispatch($new_url);
+            CheckIndexation::dispatch($new_url)->onQueue('default');
         }
 
         return redirect()->route('show', ['search' => $search->id]);
